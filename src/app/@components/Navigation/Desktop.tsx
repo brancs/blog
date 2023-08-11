@@ -1,11 +1,16 @@
 'use client'
 
+import { navItemType } from '@/@types'
 import Divider from '../Divider'
 import ThemeSwitch from '../ThemeSwitch'
-import NavList from './NavList'
+import { NavList } from './NavList'
 import NavTitle from './NavTitle'
 
-export default function Desktop() {
+interface DesktopProps {
+  navItems: navItemType[]
+}
+
+export default function Desktop({ navItems }: DesktopProps) {
   return (
     <>
       <aside className="custom-noise flex min-w-[224px] flex-col items-center gap-8 bg-nav p-8 shadow-nav">
@@ -13,7 +18,12 @@ export default function Desktop() {
         <div className="w-full">Search bar</div>
         <div className="flex w-full flex-col gap-6">
           <NavTitle text="Categories" />
-          <NavList />
+          <NavList.Root className="">
+            {navItems &&
+              navItems.map((item) => (
+                <NavList.Item key={item.text} item={item} />
+              ))}
+          </NavList.Root>
         </div>
         <div>Ad</div>
         <div className="flex w-full flex-col gap-6">

@@ -4,6 +4,7 @@ import { Poppins } from 'next/font/google'
 import { Navigation } from './@components'
 import ContentWrapper from './@components/ContentWrapper'
 import { ViewportProvider } from './@context/Viewport'
+import { PostProvider } from './@context/Post'
 
 const fontFamily = Poppins({ weight: '400', subsets: ['latin'] })
 
@@ -21,10 +22,12 @@ export default function RootLayout({
     <html lang="pt-br">
       <body className={fontFamily.className}>
         <ViewportProvider>
-          <ContentWrapper>
-            <Navigation />
-            {children}
-          </ContentWrapper>
+          <PostProvider>
+            <ContentWrapper>
+              <Navigation />
+              {children}
+            </ContentWrapper>
+          </PostProvider>
         </ViewportProvider>
       </body>
     </html>
