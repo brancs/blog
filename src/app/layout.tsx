@@ -1,3 +1,5 @@
+'use client'
+
 import './globals.css'
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
@@ -5,6 +7,7 @@ import { Navigation } from './@components'
 import ContentWrapper from './@components/ContentWrapper'
 import { ViewportProvider } from './@context/Viewport'
 import { PostProvider } from './@context/Post'
+import { ThemeProvider } from './@context/Theme'
 
 const fontFamily = Poppins({ weight: '400', subsets: ['latin'] })
 
@@ -23,10 +26,12 @@ export default function RootLayout({
       <body className={fontFamily.className}>
         <ViewportProvider>
           <PostProvider>
-            <ContentWrapper>
-              <Navigation />
-              {children}
-            </ContentWrapper>
+            <ThemeProvider>
+              <ContentWrapper>
+                <Navigation />
+                {children}
+              </ContentWrapper>
+            </ThemeProvider>
           </PostProvider>
         </ViewportProvider>
       </body>

@@ -8,10 +8,10 @@ interface MobileProps {
 export default function Mobile({ navItems }: MobileProps) {
   return (
     <>
-      <div className="custom-noise fixed top-0 z-10 h-16 w-full bg-nav shadow-nav">
+      <div className="custom-noise fixed top-0 z-10 h-16 w-full bg-slate-100 shadow-navLight dark:bg-nav dark:shadow-nav">
         Top
       </div>
-      <div className="custom-noise fixed bottom-0 z-10 h-16 w-full bg-nav shadow-nav">
+      <div className="custom-noise fixed bottom-0 z-10 h-16 w-full bg-slate-100 shadow-navLight dark:bg-nav dark:shadow-nav">
         <NavList.Root className="h-full flex-row items-center justify-center">
           {navItems &&
             navItems.map((item) => (

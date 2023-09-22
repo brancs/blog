@@ -16,12 +16,17 @@ export default function PagePost({ params }: PagePostProps) {
     (post) => post.id === id || Voca.slugify(post.title) === id
   )
   const { setCurrentPost } = useContext(PostContext)
+
   const breadCrumbList = [
     {
       title: `${currentPost?.category}`,
       path: `/posts/${currentPost?.category}`,
     },
-    { title: `${currentPost?.title}`, path: `/post/${currentPost?.id}` },
+    {
+      title: `${currentPost?.title}`,
+      path: `/post/${Voca.slugify(currentPost?.title)}`,
+      active: true,
+    },
   ]
 
   useEffect(() => {
@@ -41,10 +46,10 @@ export default function PagePost({ params }: PagePostProps) {
   }, [currentPost, setCurrentPost])
 
   return (
-    <main className="mx-3 py-10">
+    <main className="custom-noise w-full bg-white px-3 py-10 dark:bg-body sm:px-5 md:px-8 lg:px-12">
       <BreadCrumbs list={breadCrumbList} />
       <div>
-        <h1>Post {currentPost?.title}</h1>
+        <h1 className="text-black dark:text-white">{currentPost?.title}</h1>
       </div>
     </main>
   )

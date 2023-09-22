@@ -22,7 +22,7 @@ export default function NavListItem({ item, ...rest }: NavItemProps) {
 
   const activeTextStyle = checkActive(path)
     ? 'text-rose-400'
-    : 'text-opacity-50 text-white'
+    : 'text-black dark:text-opacity-50 dark:text-white'
 
   if (!icon)
     return (

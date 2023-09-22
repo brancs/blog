@@ -50,6 +50,15 @@ export function Navigation() {
 
   const navItems = makeNavItemsIcon(isMobile)
 
-  if (isMobile) return <Mobile navItems={navItems} />
-  return <Desktop navItems={navItems} />
+  return (
+    <>
+      <nav>
+        {isMobile ? (
+          <Mobile navItems={navItems} />
+        ) : (
+          <Desktop navItems={navItems} />
+        )}
+      </nav>
+    </>
+  )
 }
